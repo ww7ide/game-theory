@@ -167,7 +167,7 @@
         \begin{align}
             BR_1(p_2) = \frac{p_2 + t + c}{2} \,.
         \end{align}
-        \item 画出企业 1 和企业 2 的最佳对策曲线。在图中标明当 $p_2 < c - t$ 和 $p_2 > 3t + c$ 时 $BR_1(p_2)$ 会怎样。（提示：回忆你对 \ref{Pset_3_TLC_Q1} 和 \ref{Pset_3_TLC_Q2} 的回答。）
+        \item\label{Pset_3_TLC_Q5} 画出企业 1 和企业 2 的最佳对策曲线。在图中标明当 $p_2 < c - t$ 和 $p_2 > 3t + c$ 时 $BR_1(p_2)$ 会怎样。（提示：回忆你对 \ref{Pset_3_TLC_Q1} 和 \ref{Pset_3_TLC_Q2} 的回答。）
         \item 使用代数方法求出纳什均衡。
         \item 当 $t = 0$ 时，均衡价格是多少？请解释你的答案。人们有时会说：``随着产品变得不那么相似和更具差异化，竞争会变得不那么激烈。'' 在我们的模型中，这句话是如何体现出来的？
     \end{enumerate_bf_alph}
@@ -217,7 +217,31 @@
         \[
         BR_1(p_2) = \frac{p_2 + t + c}{2} \,.
         \]
-        \item \,
+        \item 当 $p_2 < c - t$ 时，我们假设
+        \[
+        p_2 = c - t - \varepsilon \,,
+        \]
+        其中 $\varepsilon$ 为一个足够小的正数，将 $p_2$ 代入 $BR_1$ 可得此时企业 1 的最佳对策
+        \[
+        p_1^\ast = c - \frac{\varepsilon}{2} \,,
+        \]
+        将该 $p_1^\ast, p_2$ 代入 \eqref{Pset_3_TLC_E2} 整理可得
+        \[
+        y > -\frac{\varepsilon}{4t} \,,
+        \]
+        故企业 2 将拿下整个市场。当 $p_2 > 3t + c$ 时，我们假设
+        \[
+        p_2 = 3t + c + \varepsilon \,,
+        \]
+        其中 $\varepsilon$ 为一个足够小的正数，将 $p_2$ 代入 $BR_1$ 可得此时企业 1 的最佳对策
+        \[
+        p_1^\ast = 2t + c + \frac{\varepsilon}{2} \,,
+        \]
+        将该 $p_1^\ast, p_2$ 代入 \eqref{Pset_3_TLC_E1} 整理可得
+        \[
+        y < 1 + \frac{\varepsilon}{4t} \,,
+        \]
+        故企业 1 将拿下整个市场。
         \begin{center}
             \begin{tikzpicture}
                 % \draw[dashed] (0,0) grid (5,5);
@@ -225,21 +249,24 @@
                 \node[left] at (0,0){$O$};
                 \draw[->] (0,0) -- (0,5) node[above]{$p_2$};
 
-                \node[below] at (1,0){$\frac{t+c}{2}$};
-                \node[below] at (2,0){$\frac{2(t+c)}{2}$};
-                \node[below] at (3,0){$\frac{3(t+c)}{2}$};
-                \node[below] at (4,0){$\frac{4(t+c)}{2}$};
-
-                \node[left] at (0,1){$\frac{t+c}{2}$};
-                \node[left] at (0,2){$\frac{2(t+c)}{2}$};
-                \node[left] at (0,3){$\frac{3(t+c)}{2}$};
-                \node[left] at (0,4){$\frac{4(t+c)}{2}$};
+                % \node[below] at (1,0){$\frac{t+c}{2}$};
+                % \node[below] at (2,0){$\frac{2(t+c)}{2}$};
+                % \node[below] at (3,0){$\frac{3(t+c)}{2}$};
+                % \node[below] at (4,0){$\frac{4(t+c)}{2}$};
+                % \node[left] at (0,1){$\frac{t+c}{2}$};
+                % \node[left] at (0,2){$\frac{2(t+c)}{2}$};
+                % \node[left] at (0,3){$\frac{3(t+c)}{2}$};
+                % \node[left] at (0,4){$\frac{4(t+c)}{2}$};
 
                 \draw (1,0) -- (3,4) node[right]{$BR_1$};
                 \draw (0,1) -- (4,3) node[right]{$BR_2$};
             \end{tikzpicture}
         \end{center}
-        \item
+        \item 设纳什均衡为 $(p_1^\ast, p_2^\ast)$。由 \ref{Pset_3_TLC_Q5} 可知，$BR_1$ 和 $BR_2$ 的交点即为纳什均衡，令 $p_1^\ast = p_2^\ast = p^\ast$ 代入 $BR_1$ 可解得
+        \[
+        p^\ast = c + t \,.
+        \]
+        \item $p_1 = p_2 = c$。当消费者付出的交通成本高于产品价差时，消费者将选择 ``高价'' 产品。
     \end{enumerate_bf_alph}
 \end{solution}
 
