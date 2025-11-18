@@ -2,7 +2,6 @@
 \input{setting}
 
 \title{博弈论教程}
-% \subtitle{ElegantLaTeX 经典之作}
 \author{$ww7ide$}
 \institute{$\mathcal Kitauji\ \mathcal Math\ \mathcal Dept.$}
 \date{$\mathcal Nov.\ 16,\ 2025$}
@@ -345,5 +344,19 @@
 \href{https://en.wikipedia.org/wiki/Strategy_(game_theory)}{混合策略}
 
 \chapter{}
+
+\begin{definition}[混合策略]
+    混合策略 $\sigma_i$ 表示参与人 $i$ 采用每个纯策略的概率。具体的，$\sigma_i(s_i)$ 是 $\sigma_i$ 赋予纯策略 $s_i$ 的概率。其中 $\sigma_i$ 要满足
+    \[
+    0 \leq \sigma_i(s_i) \,,\quad \forall s_i \in S_i \,,
+    \]
+    且
+    \[
+    \sum_{s_i \in S_i} \sigma_i(s_i) = 1 \,.
+    \]
+    参与人 $i$ 选择混合策略 $\sigma_i$ 的收益是该混合策略中每个纯策略期望收益的加权平均。
+\end{definition}
+
+看到混合策略的定义后，不知道你是否有种熟悉感觉。没错，混合策略 $\sigma_i$ 其实就是参与者 $i$ 的纯策略集合 $S_i$ 上的概率分布。
 
 \end{document}
