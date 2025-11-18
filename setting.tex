@@ -14,6 +14,8 @@
 
 \usepackage{float}
 
+\usepackage{multirow}
+
 \theoremstyle{plain}
 \newtheorem*{definition}{定义}
 \newtheorem*{axiom}{公理}
@@ -40,6 +42,14 @@
 
 \newlist{enumerate_bf_arabic}{enumerate}{1}
 \setlist[enumerate_bf_arabic]{label=\textbf{\arabic*}}
+
+\SetEnumitemKey{question}{label=\textbf{\alph*.}}
+
+\newcommand{\rmd}{\mathrm d}
+\newcommand{\bbE}{\mathbb E}
+\newcommand{\bbP}{\mathbb P}
+\newcommand{\calP}{\mathcal P}
+\newcommand{\bbR}{\mathbb R}
 
 %====================================
 % ElegantBook 风格封面，重写 maketitle

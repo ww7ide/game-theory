@@ -1,0 +1,19 @@
+\chapter{}
+
+\href{https://en.wikipedia.org/wiki/Prisoner%27s_dilemma}{囚徒困境}
+
+\begin{definition}[优势策略]
+    设有一个包含 $n$ 个参与者的博弈，第 $i$ 个参与者的策略集合为 $S_i$ 其收益函数为 $u_i : S_1 \times S_2 \times \cdots \times S_n \to \mathbb{R}$ 且 $s_i, s_i' \in S_i$。若
+    \[
+    u_i(s_i', s_{-i}) < u_i(s_i, s_{-i}) \,,\quad \forall s_{-i} \in S_{-i} \,,
+    \]
+    则称 $s_i'$ 严格劣势于 $s_i$ 或 $s_i$ 严格优势于 $s_i'$。若
+    \[
+    u_i(s_i', s_{-i}) \leq u_i(s_i, s_{-i}) \,,\quad \forall s_{-i} \in S_{-i} \,,
+    \]
+    且
+    \[
+    u_i(s_i', s_{-i}) < u_i(s_i, s_{-i}) \,,\quad \exists s_{-i} \in S_{-i} \,,
+    \]
+    则称 $s_i'$ 弱劣势于 $s_i$ 或 $s_i$ 弱优势于 $s_i'$。
+\end{definition}

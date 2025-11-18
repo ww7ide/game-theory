@@ -1,0 +1,140 @@
+\chapter{}
+
+\begin{definition}[混合策略]
+    混合策略 $\sigma_i$ 表示参与人 $i$ 采用每个纯策略的概率。具体的，$\sigma_i(s_i)$ 是 $\sigma_i$ 赋予纯策略 $s_i$ 的概率。其中 $\sigma_i$ 要满足
+    \[
+    0 \leq \sigma_i(s_i) \,,\quad \forall s_i \in S_i \,,
+    \]
+    且
+    \[
+    \sum_{s_i \in S_i} \sigma_i(s_i) = 1 \,.
+    \]
+    参与人 $i$ 选择混合策略 $\sigma_i$ 的收益是该混合策略中每个纯策略期望收益的加权平均。
+\end{definition}
+
+看到混合策略的定义后，不知道你是否有种熟悉感觉。没错，混合策略 $\sigma_i$ 其实就是参与者 $i$ 的纯策略集合 $S_i$ 上的概率分布，即
+\[
+\sigma_i : S_i \to \bbR \,.
+\]
+而混合策略的收益在定义中其实是模糊的，为了使其形式化，我们要先回忆一些知识。
+
+公理化概率论里，概率空间 $(\Omega, \mathscr F, \bbP)$ 上的随机变量 $X$ 的期望是如下 Lebesgue 积分
+\[
+\bbE(X) \coloneqq \int_{\Omega} X \,\rmd \bbP \,.
+\]
+
+设有 $n$ 个参与者的博弈，第 $i$ 个参与者的策略集合为 $S_i$ 其收益函数为 $u_i$。
+
+我们先从最简单的有限博弈的情况推导。取
+\[
+S \coloneqq S_1 \times S_2 \times \cdots \times S_n
+\]
+作为样本空间。由于有限博弈的情况下 $S$ 是有限集，故取 $\calP(S)$ 作为事件域，容易验证 $\calP(S)$ 是 $S$ 上的 $\sigma$-代数，即 $(S, \calP(S))$ 是可测空间。假设各参与者独立随机化，接下来我们将用混合策略组合 $\sigma$ 诱导出一个概率测度
+\[
+\bbP_\sigma : \calP(S) \to \bbR \,,
+\]
+对于任意单点集 $\{(s_1, s_2, \dots, s_n)\} \subseteq S$，
+\[
+\bbP_\sigma(\{(s_1, s_2, \dots, s_n)\}) \coloneqq \prod_{j=1}^n \sigma_j(s_j) \,,
+\]
+这表示所有参与者恰好选出 $(s_1, s_2, \dots, s_n)$ 这个策略组合的概率。对于任意事件 $A \subseteq S$，
+\[
+\bbP_\sigma(A) \coloneqq \sum_{s \in A} \bbP_\sigma(\{s\}) \,.
+\]
+需要注意的是，由于不同混合策略组合中混合策略的概率分布不同，因此不同混合策略组合 $\sigma$ 将诱导出不同的 $\bbP_\sigma$，容易验证 $\bbP_\sigma$ 是 $(S, \calP(S))$ 上的概率测度。由此我们构造出了概率空间
+\[
+(S, \calP(S), \bbP_\sigma) \,.
+\]
+而纯策略下的收益函数
+\[
+u_i : S \to \bbR
+\]
+显然满足
+\[
+\{s \in S \mid u_i(s) \leq r\} \in \calP(S) \,,\quad \forall r \in \bbR \,.
+\]
+因此 $u_i$ 其实就是 $(S, \calP(S))$ 上的随机变量。至此，我们可以给出参与者 $i$ 在混合策略组合 $\sigma$ 下的收益
+\[
+u_i(\sigma) \coloneqq \bbE_\sigma(u_i) = \int_S u_i \,\rmd \bbP_\sigma \,,
+\]
+因为 $S$ 是有限的，积分变为了求和
+\[
+\int_S u_i \,\rmd \bbP_\sigma = \sum_{s \in S} u_i(s) \bbP_\sigma(\{s\}) \,.
+\]
+
+\begin{example}
+    考虑以下博弈。
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{c|cc}
+            & L & R \\
+            \hline
+            U & (2, 1) & (0, 0) \\
+            D & (0, 0) & (1, 2) \\
+        \end{tabular}
+    \end{table}
+
+    参与者 1 的混合策略为 $(1/5, 4/5)$，参与者 2 的混合策略为 $(1/2, 1/2)$。计算各参与者的收益。
+\end{example}
+
+\begin{proposition}
+    混合策略的收益介于该混合策略的支撑集中纯策略的期望收益之间。
+\end{proposition}
+
+\begin{definition}[混合策略最佳对策]
+    设有一个包含 $n$ 个参与者的博弈。称混合策略 $\sigma_i'$ 是对手混合策略组合 $\sigma_{{-i}}$ 下的最佳对策，当且仅当
+    \[
+    u_i(\sigma_i', \sigma_{-i}) \geq u_i(\sigma_i, \sigma_{-i}) \,,\quad \forall \sigma_i \in \Delta(S_i) \,.
+    \]
+\end{definition}
+
+\begin{corollary}
+    如果一个混合策略是最佳对策，那么该混合策略的支撑集中每个纯策略也是最佳对策。
+\end{corollary}
+
+\begin{definition}[混合策略纳什均衡]
+    设有一个包含 $n$ 个参与者的博弈。混合策略组合
+    \[
+    (\sigma_1^\ast, \sigma_2^\ast, \dots, \sigma_n^\ast)
+    \]
+    称为混合策略纳什均衡，当且仅当对于任意参与者 $i$ 都有 $\sigma_i^\ast$ 是 $\sigma_{-i}^\ast$ 下的最佳对策。
+\end{definition}
+
+\begin{example}
+    Venus 和 Serena 正在进行网球对抗训练。此时网球来到了 Venus 的场上，她现在有两条进攻路线，进攻 Serena 的左侧或进攻 Serena 的右侧。而 Serena 也有两个防守选择，即防守左侧或防守右侧。Venus 和 Serena 的收益如下。
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|cc|cc|}
+        \hline
+                               &   & \multicolumn{2}{c|}{Serena} \\
+                               &   & L            & R            \\ \hline
+        \multirow{2}{*}{Venus} & L & (50, 50)     & (80, 20)     \\
+                               & R & (90, 10)     & (20, 80)     \\ \hline
+        \end{tabular}
+        \caption{Venus 和 Serena 的收益}
+    \end{table}
+
+    \begin{enumerate}[question]
+        \item 找出该博弈的混合策略纳什均衡。
+    \end{enumerate}
+
+    经过一段时间练习后，Serena 防守左侧的成功率大大提高了，那么她应该增加防守左侧的概率吗？还是应该考虑到 Venus 会想到 ``她防守左侧的成功率提高，那么我应该减少进攻左侧的概率转而进攻右侧。'' 而减少防守左侧的概率？Venus 和 Serena 的新收益如下。
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|cc|cc|}
+        \hline
+                               &   & \multicolumn{2}{c|}{Serena} \\
+                               &   & L            & R            \\ \hline
+        \multirow{2}{*}{Venus} & L & (30, 70)     & (80, 20)     \\
+                               & R & (90, 10)     & (20, 80)     \\ \hline
+        \end{tabular}
+        \caption{Venus 和 Serena 的新收益}
+    \end{table}
+
+    \begin{enumerate}[question,start=2]
+        \item 找出该博弈的混合策略纳什均衡，验证上面你的想法。
+    \end{enumerate}
+\end{example}

@@ -1,0 +1,18 @@
+\chapter{}
+
+合伙人博弈
+
+\href{https://en.wikipedia.org/wiki/Strategic_complements}{策略互补博弈}
+
+如果每个参与者都选择了自身的策略，并且没有参与者能够仅改变自身的策略而其他参与者保持不变而获益，那么当前的策略组合就构成了纳什均衡。
+
+\begin{definition}[纳什均衡]
+    设有一个包含 $n$ 个参与者的博弈，第 $i$ 个参与者的策略集合为 $S_i$ 其收益函数为 $u_i : S_1 \times S_2 \times \cdots \times S_n \to \mathbb{R}$。策略组合
+    \[
+    (s_1^\ast, s_2^\ast, \dots, s_n^\ast)
+    \]
+    称为纳什均衡，当且仅当对于任意参与者 $i$ 都有
+    \[
+    u_i(s_i^\ast, s_{-i}^\ast) \geq u_i(s_i, s_{-i}^\ast) \,,\quad \forall s_i \in S_i \,.
+    \]
+\end{definition}

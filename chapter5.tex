@@ -1,0 +1,75 @@
+\chapter{}
+
+投资者博弈
+
+\href{https://en.wikipedia.org/wiki/Strategic_complements}{策略互补博弈}
+
+\section*{Problem Set 2}
+
+\begin{problem}[Nash Equilibria and Iterative Deletion]
+    考虑以下博弈。
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{c|ccc}
+            & L & C & R \\
+            \hline
+            T & (2, 0) & (1, 1) & (4, 2) \\
+            M & (3, 4) & (1, 2) & (2, 3) \\
+            B & (1, 3) & (0, 2) & (3, 0) \\
+        \end{tabular}
+        \caption{Nash Equilibria and Iterative Deletion}
+    \end{table}
+
+    \begin{enumerate_bf_alph}
+        \item 哪些策略在迭代剔除严格劣势策略后仍然保留？
+        \item 找出此博弈的（纯策略）纳什均衡。
+        \item 请尽可能简洁但严谨地论证，一般而言（不仅仅是此博弈中），纳什均衡中的策略永远不会在迭代剔除严格劣势策略的过程中被剔除。
+    \end{enumerate_bf_alph}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate_bf_alph}
+        \item T，M，L 和 R。
+        \item (M,L) 和 (T,R)。
+        \item 设有一个包含 $n$ 个参与者的博弈，第 $i$ 个参与者的策略集合为 $S_i$ 其收益函数为
+        \[
+        u_i : S_1 \times S_2 \times \cdots \times S_n \to \mathbb{R} \,,
+        \]
+        策略组合
+        \[
+        s^\ast \coloneqq (s_1^\ast, s_2^\ast, \dots, s_n^\ast)
+        \]
+        是该博弈的纳什均衡。由于 $s^\ast$ 是该博弈的纳什均衡，因此对于任意参与者 $i$ 都有
+        \[
+        u_i(s_i^\ast, s_{-i}^\ast) \geq u_i(s_i, s_{-i}^\ast) \,,\quad \forall s_i \in S_i \,,
+        \]
+        于是可知 $s_i^\ast$ 不会严格劣势于参与者 $i$ 的其余策略，即 $s_i^\ast$ 不会在第 $1$ 轮剔除中被剔除。假设 $s^\ast$ 的各分量在第 $k$ 轮剔除中不会被剔除, 现证明 $s^\ast$ 的各分量在第 $k+1$ 轮剔除中不会被剔除。假设 $s_i^\ast$ 在第 $k+1$ 轮剔除中被剔除，即存在策略 $t_i \in S_i^k$ 使得
+        \[
+        u_i(s_i^\ast, s_{-i}) < u_i(t_i, s_{-i}) \,,\quad \forall s_{-i} \in S_{-i}^k \,,
+        \]
+        其中 $S_i^k$ 是第 $k$ 轮剔除后参与者 $i$ 的策略集合。只用令 $s_{-i} = s_{-i}^\ast$，于是
+        \[
+        u_i(s_i^\ast, s_{-i}^\ast) < u_i(t_i, s_{-i}^\ast) \,,
+        \]
+        这与 $s^\ast$ 作为纳什均衡矛盾，故 $s_i^\ast$ 不会被剔除。因此由数学归纳法可知，$s^\ast$ 的各分量在迭代剔除严格劣势策略中不会被剔除。
+    \end{enumerate_bf_alph}
+\end{solution}
+
+\begin{problem}[Splitting the Dollar(s)]
+    玩家 1 和玩家 2 正在就如何分配 \$10 进行讨价还价。每个玩家 $i$ 为自己报出一个金额 $s_i$，取值范围在 $0$ 到 $10$ 之间。这些数值不要求是整数。两位玩家同时作出选择。每个玩家的收益等于她自己实际得到的钱数。我们将考虑该博弈在两种不同规则下的情况。在这两种规则中，如果 $s_1 + s_2 \leq 10 $，则两位玩家各自得到自己所报的金额（若有剩余金额，则被销毁）。
+
+    \begin{enumerate_bf_alph}
+        \item 第一种规则，如果 $s_1 + s_2 > 10$，则两位玩家都得到 \$0，剩余的钱被销毁。这个博弈的（纯策略）纳什均衡是什么？
+        \item 第二种规则，如果 $s_1 + s_2 > 10$ 且两人报出的金额不同，则报出较小金额的人获得自己报的金额，而另一位获得剩余的金额。如果 $s_1 + s_2 > 10$ 且 $s_1 = s_2$，则两位玩家各得 \$5。这个博弈的（纯策略）纳什均衡是什么？
+        \item 现在假设这两个博弈都增加一条额外规则，即玩家报出的金额必须是整数美元。这个改变会不会影响任意一种情形中的（纯策略）纳什均衡？
+    \end{enumerate_bf_alph}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate_bf_alph}
+        \item $s \in \{(x, 10 - x) \mid x \in [0, 10]\}$ 都是纳什均衡。
+        \item $(5,5)$。
+        \item 第一种规则下纳什均衡变为 $s \in \{(x, 10 - x) \mid x = 0, 1, 2, \dots, 10\}$，第二种规则下纳什均衡将变为 $(5,5), (5,6), (6,5), (6,6)$。
+    \end{enumerate_bf_alph}
+\end{solution}
